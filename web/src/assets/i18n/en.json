@@ -1,0 +1,23 @@
+{
+  "WELCOME": {
+    "WELCOME": "Welcome"
+  },
+  "COMMON": {
+    "APP_TITLE": "Skywire Proxy Discovery"
+  },
+  "HEADER": {
+    "ALL_CONFIGURATIONS": "Proxy list"
+  },
+  "TABLE": {
+    "NO_RESULTS": "No results found",
+    "FILTER_CONFIGURATIONS": "Filter proxies"
+  },
+  "PROXY": {
+    "KEY": "Public Key/Port",
+    "COUNTRY" : "Country",
+    "CITY": "City",
+    "TYPE": "Status",
+    "COPY": "Click to copy hash",
+    "COPIED": "Copied"
+  }
+}
