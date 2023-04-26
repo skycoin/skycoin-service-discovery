@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/SkycoinPro/skycoin-service-discovery/internal/sdmetrics"
-	"github.com/SkycoinPro/skycoin-service-discovery/pkg/service-discovery/store"
+	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 )
 
 // apiTestWant describes the desired result of the test case.

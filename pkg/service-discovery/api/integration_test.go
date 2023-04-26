@@ -20,8 +20,8 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/SkycoinPro/skycoin-service-discovery/internal/sdmetrics"
-	"github.com/SkycoinPro/skycoin-service-discovery/pkg/service-discovery/store"
+	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 )
 
 const testRedisAddrEnvName = "TEST_SERVICEDISC_REDIS_ADDR"

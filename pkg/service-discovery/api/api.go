@@ -25,8 +25,8 @@ import (
 	"github.com/skycoin/skywire-utilities/pkg/networkmonitor"
 	"github.com/skycoin/skywire/pkg/servicedisc"
 
-	"github.com/SkycoinPro/skycoin-service-discovery/internal/sdmetrics"
-	"github.com/SkycoinPro/skycoin-service-discovery/pkg/service-discovery/store"
+	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 )
 
 var (
