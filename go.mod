@@ -1,4 +1,4 @@
-module github.com/SkycoinPro/skycoin-service-discovery
+module github.com/skycoin/skycoin-service-discovery
 
 go 1.17
 
