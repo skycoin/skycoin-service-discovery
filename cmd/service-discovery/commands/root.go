@@ -22,10 +22,10 @@ import (
 	"github.com/spf13/cobra"
 	"gorm.io/gorm"
 
-	"github.com/SkycoinPro/skycoin-service-discovery/internal/pg"
-	"github.com/SkycoinPro/skycoin-service-discovery/internal/sdmetrics"
-	"github.com/SkycoinPro/skycoin-service-discovery/pkg/service-discovery/api"
-	"github.com/SkycoinPro/skycoin-service-discovery/pkg/service-discovery/store"
+	"github.com/skycoin/skycoin-service-discovery/internal/pg"
+	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/api"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 )
 
 var log = logging.MustGetLogger("service-discovery")
