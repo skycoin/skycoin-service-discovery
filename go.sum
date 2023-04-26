@@ -595,7 +595,6 @@ github.com/skycoin/skycoin v0.27.1/go.mod h1:78nHjQzd8KG0jJJVL/j0xMmrihXi70ti63f
 github.com/skycoin/skywire v1.3.2-0.20230124214138-b3f0bcfb7e77 h1:kxDlSETNc5g43tf9zwQ0PlhXt/HWIutccEy75k9LAE4=
 github.com/skycoin/skywire v1.3.2-0.20230124214138-b3f0bcfb7e77/go.mod h1:5piBJKLFlMIfJBIM8iwzVp0+ehvLOVRajT0RNg2TzB4=
 github.com/skycoin/skywire-utilities v0.0.0-20220712142443-abafa30105ce/go.mod h1:B63p56igl38Ha+zjqi26d2om6XEe9jozwB6kzAWMnm0=
-github.com/skycoin/skywire-utilities v0.0.0-20230110132024-c5536ba8e22c h1:jYHyLwSyRVR/TmT4WWIGAeFX4FawGHA4Gaeic0zX3KI=
 github.com/skycoin/skywire-utilities v0.0.0-20230110132024-c5536ba8e22c/go.mod h1:X5H+fKC3rD11/sm4t9V2FWy/aet7OdEilaO2Ar3waXY=
 github.com/skycoin/skywire-utilities v0.0.0-20230314131305-bdd8e27cbd46 h1:19CN0XOKtaO4qZsMwrpTTeNwwucLVRKaBswP99rgNME=
 github.com/skycoin/skywire-utilities v0.0.0-20230314131305-bdd8e27cbd46/go.mod h1:X5H+fKC3rD11/sm4t9V2FWy/aet7OdEilaO2Ar3waXY=
