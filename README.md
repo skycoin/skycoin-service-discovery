@@ -29,18 +29,24 @@ This requires docker to be installed on the system and runnable from the user in
 Ensure `redis-server` is running. If it is installed locally, one can just run:
 
 ```bash
-$ redis-server
+redis-server
+```
+
+Alternatively, you can run redis in a docker container:
+
+```
+docker run -d -p 6379:6379 --name redis redis
 ```
 
 Ensure `postgresql` is running with `postgres` as username, password and database. You can run it by docker as follow:
 ```bash
-$ docker run --name postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres -p 5432:5432 -d postgres
+docker run --name postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres -p 5432:5432 -d postgres
 ```
 
 Assuming redis is bound to `redis://localhost:6379`, we can run `service-discovery` to serve on `:8000` with:
 
 ```bash
-$ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go --redis="redis://localhost:6379" --addr=":8000"
+PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go --redis="redis://localhost:6379" --addr=":8000"
 ```
 
 ### Running in test mode
@@ -48,26 +54,26 @@ $ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/servic
 The proxy service registration and de-registration endpoints require us to use specialised html header fields for authentication/authorization. When testing, this can be a pain. To disable auth completely, run `proxy-server` with the `--test` flag:
 
 ```bash 
-$ go run ./cmd/service-discovery/service-discovery.go --test
+go run ./cmd/service-discovery/service-discovery.go --test
 ```
 
 ### Running with metrics on
 To expose a Victoria Metrics endpoint for `skycoin-service-discovery` un it with the `-m` or `--metrics` flag.
 ```bash
-$ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go -m localhost:9099
+PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go -m localhost:9099
 ```
 
 ## Build Docker Image
 To build docker image use
 ```bash
-$ docker build -f Dockerfile -t skycoinpro/service-discovery:test .
+docker build -f Dockerfile -t skycoinpro/service-discovery:test .
 ```
 
 ### Help
 
 This prints the help menu and exits.
 ```bash
-$ go run ./cmd/service-discovery/service-discovery.go --help
+go run ./cmd/service-discovery/service-discovery.go --help
 ```
 
 ## HTTP API
