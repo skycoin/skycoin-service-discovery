@@ -9,7 +9,7 @@ and discovery of
 
 ## Dependencies
 
-`service-discovery` is written in `golang` and uses `redis` as the database.
+`service-discovery` is written in `golang` and uses `redis` and `postgres` as databases (both required).
 
 - [Golang](https://golang.org/) (version 1.19 or higher is required).
 - [Redis](https://redis.io/) (only version 5.0.8 is tested with `service-discovery`).
@@ -32,7 +32,7 @@ Ensure `redis-server` is running. If it is installed locally, one can just run:
 $ redis-server
 ```
 
-Ensure `postgre sql` is running with `postgres` as username, password and database. You can run it by docker as follow:
+Ensure `postgresql` is running with `postgres` as username, password and database. You can run it by docker as follow:
 ```bash
 $ docker run --name postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres -p 5432:5432 -d postgres
 ```
