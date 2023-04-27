@@ -1,6 +1,11 @@
-# Skywire Proxy Discovery
+# Skycoin Service Discovery
 
-The Skywire Proxy Discovery is an HTTP service and web app which allows users to discover and register Skywire Proxy Exit Nodes. These nodes allow users to connect to a skywire-based proxy.
+The Skycoin service discovery allows registering services to be discovered by other participants in the Skywire network. Currently it allows registration 
+and discovery of 
+
+- VPNs
+- Socks proxies
+- public visors
 
 ## Dependencies
 
@@ -8,6 +13,16 @@ The Skywire Proxy Discovery is an HTTP service and web app which allows users to
 
 - [Golang](https://golang.org/) (version 1.19 or higher is required).
 - [Redis](https://redis.io/) (only version 5.0.8 is tested with `service-discovery`).
+
+## Run tests
+
+You can run integration tests of the service discovery with the following command:
+
+```
+make test
+```
+
+This requires docker to be installed on the system and runnable from the user invoking the command.
 
 ## Run
 
