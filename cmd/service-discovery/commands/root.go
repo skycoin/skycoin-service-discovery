@@ -7,9 +7,14 @@ import (
 	"os"
 	"strings"
 
+	cc "github.com/ivanpirog/coloredcobra"
 	"github.com/skycoin/dmsg/pkg/direct"
 	"github.com/skycoin/dmsg/pkg/dmsg"
 	"github.com/skycoin/dmsg/pkg/dmsghttp"
+	"github.com/skycoin/skycoin-service-discovery/internal/pg"
+	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/api"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 	"github.com/skycoin/skywire-utilities/pkg/buildinfo"
 	"github.com/skycoin/skywire-utilities/pkg/cipher"
 	"github.com/skycoin/skywire-utilities/pkg/cmdutil"
@@ -19,14 +24,8 @@ import (
 	"github.com/skycoin/skywire-utilities/pkg/skyenv"
 	"github.com/skycoin/skywire-utilities/pkg/storeconfig"
 	"github.com/skycoin/skywire-utilities/pkg/tcpproxy"
-	cc "github.com/ivanpirog/coloredcobra"
 	"github.com/spf13/cobra"
 	"gorm.io/gorm"
-
-	"github.com/skycoin/skycoin-service-discovery/internal/pg"
-	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
-	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/api"
-	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 )
 
 var log = logging.MustGetLogger("service-discovery")
@@ -194,18 +193,18 @@ var rootCmd = &cobra.Command{
 // Execute executes root CLI command.
 func Execute() {
 	cc.Init(&cc.Config{
-	RootCmd:       rootCmd,
-	Headings:      cc.HiBlue + cc.Bold, //+ cc.Underline,
-	Commands:      cc.HiBlue + cc.Bold,
-	CmdShortDescr: cc.HiBlue,
-	Example:       cc.HiBlue + cc.Italic,
-	ExecName:      cc.HiBlue + cc.Bold,
-	Flags:         cc.HiBlue + cc.Bold,
-	//FlagsDataType: cc.HiBlue,
-	FlagsDescr:      cc.HiBlue,
-	NoExtraNewlines: true,
-	NoBottomNewline: true,
-})
+		RootCmd:       rootCmd,
+		Headings:      cc.HiBlue + cc.Bold, //+ cc.Underline,
+		Commands:      cc.HiBlue + cc.Bold,
+		CmdShortDescr: cc.HiBlue,
+		Example:       cc.HiBlue + cc.Italic,
+		ExecName:      cc.HiBlue + cc.Bold,
+		Flags:         cc.HiBlue + cc.Bold,
+		//FlagsDataType: cc.HiBlue,
+		FlagsDescr:      cc.HiBlue,
+		NoExtraNewlines: true,
+		NoBottomNewline: true,
+	})
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatal(err)
 	}
