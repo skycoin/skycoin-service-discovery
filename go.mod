@@ -1,6 +1,6 @@
-module github.com/skycoin/skywire-services
+module github.com/skycoin/skycoin-service-discovery
 
-go 1.17
+go 1.18
 
 require (
 	github.com/go-chi/chi v4.1.2+incompatible
@@ -11,7 +11,6 @@ require (
 	github.com/sirupsen/logrus v1.8.1
 	github.com/skycoin/dmsg v1.3.0-rc1.0.20230105101327-c8f2541c3de8
 	github.com/skycoin/skycoin v0.27.1
-	github.com/skycoin/skycoin-service-discovery v0.0.0-20230427210014-c5a644872ec9
 	github.com/skycoin/skywire v1.3.2-0.20230124214138-b3f0bcfb7e77
 	github.com/skycoin/skywire-utilities v0.0.0-20230414160004-9a7ee37938b1
 	github.com/spf13/cobra v1.4.0
