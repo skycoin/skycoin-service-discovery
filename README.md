@@ -1,31 +1,52 @@
-# Skywire Proxy Discovery
+# Skycoin Service Discovery
 
-The Skywire Proxy Discovery is an HTTP service and web app which allows users to discover and register Skywire Proxy Exit Nodes. These nodes allow users to connect to a skywire-based proxy.
+The Skycoin service discovery allows registering services to be discovered by other participants in the Skywire network. Currently it allows registration 
+and discovery of 
+
+- VPNs
+- Socks proxies
+- public visors
 
 ## Dependencies
 
-`service-discovery` is written in `golang` and uses `redis` as the database.
+`service-discovery` is written in `golang` and uses `redis` and `postgres` as databases (both required).
 
 - [Golang](https://golang.org/) (version 1.19 or higher is required).
 - [Redis](https://redis.io/) (only version 5.0.8 is tested with `service-discovery`).
+
+## Run tests
+
+You can run integration tests of the service discovery with the following command:
+
+```
+make test
+```
+
+This requires docker to be installed on the system and runnable from the user invoking the command.
 
 ## Run
 
 Ensure `redis-server` is running. If it is installed locally, one can just run:
 
 ```bash
-$ redis-server
+redis-server
 ```
 
-Ensure `postgre sql` is running with `postgres` as username, password and database. You can run it by docker as follow:
+Alternatively, you can run redis in a docker container:
+
+```
+docker run -d -p 6379:6379 --name redis redis
+```
+
+Ensure `postgresql` is running with `postgres` as username, password and database. You can run it by docker as follow:
 ```bash
-$ docker run --name postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres -p 5432:5432 -d postgres
+docker run --name postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres -p 5432:5432 -d postgres
 ```
 
 Assuming redis is bound to `redis://localhost:6379`, we can run `service-discovery` to serve on `:8000` with:
 
 ```bash
-$ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go --redis="redis://localhost:6379" --addr=":8000"
+PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go --redis="redis://localhost:6379" --addr=":8000"
 ```
 
 ### Running in test mode
@@ -33,13 +54,13 @@ $ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/servic
 The proxy service registration and de-registration endpoints require us to use specialised html header fields for authentication/authorization. When testing, this can be a pain. To disable auth completely, run `proxy-server` with the `--test` flag:
 
 ```bash 
-$ go run ./cmd/service-discovery/service-discovery.go --test
+go run ./cmd/service-discovery/service-discovery.go --test
 ```
 
 ### Running with metrics on
 To expose a Victoria Metrics endpoint for `skycoin-service-discovery` un it with the `-m` or `--metrics` flag.
 ```bash
-$ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go -m localhost:9099
+PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-discovery/service-discovery.go -m localhost:9099
 ```
 
 ## Build Docker Image
@@ -52,7 +73,7 @@ $ docker build -f Dockerfile -t skycoin/service-discovery:test .
 
 This prints the help menu and exits.
 ```bash
-$ go run ./cmd/service-discovery/service-discovery.go --help
+go run ./cmd/service-discovery/service-discovery.go --help
 ```
 
 ## HTTP API
