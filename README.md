@@ -69,6 +69,12 @@ To build docker image use
 $ docker build -f Dockerfile -t skycoin/service-discovery:test .
 ```
 
+To push the docker image run:
+
+```bash
+$ docker push skycoin/service-discovery:test 
+```
+
 ### Help
 
 This prints the help menu and exits.
