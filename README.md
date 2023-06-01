@@ -66,7 +66,7 @@ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-
 ## Build Docker Image
 To build docker image use
 ```bash
-docker build -f Dockerfile -t skycoinpro/service-discovery:test .
+$ docker build -f Dockerfile -t skycoin/service-discovery:test .
 ```
 
 ### Help

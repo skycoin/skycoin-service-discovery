@@ -1,17 +1,18 @@
 module github.com/skycoin/skycoin-service-discovery
 
-go 1.17
+go 1.18
 
 require (
 	github.com/go-chi/chi v4.1.2+incompatible
-	github.com/go-chi/cors v1.1.1
+	github.com/go-chi/cors v1.2.1
 	github.com/go-redis/redis v6.15.9+incompatible
+	github.com/ivanpirog/coloredcobra v1.0.0
 	github.com/lib/pq v1.10.7
 	github.com/sirupsen/logrus v1.8.1
 	github.com/skycoin/dmsg v1.3.0-rc1.0.20230105101327-c8f2541c3de8
 	github.com/skycoin/skycoin v0.27.1
 	github.com/skycoin/skywire v1.3.2-0.20230124214138-b3f0bcfb7e77
-	github.com/skycoin/skywire-utilities v0.0.0-20230314131305-bdd8e27cbd46
+	github.com/skycoin/skywire-utilities v0.0.0-20230414160004-9a7ee37938b1
 	github.com/spf13/cobra v1.4.0
 	github.com/stretchr/testify v1.8.0
 	gorm.io/driver/postgres v1.3.8
@@ -25,6 +26,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
+	github.com/fatih/color v1.13.0 // indirect
 	github.com/go-chi/chi/v5 v5.0.8-0.20220103230436-7dbe9a0bd10f // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/gocarina/gocsv v0.0.0-20220927221512-ad3251f9fa25 // indirect
@@ -63,9 +65,9 @@ require (
 	github.com/valyala/histogram v1.2.0 // indirect
 	github.com/xtaci/kcp-go v5.4.20+incompatible // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
-	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
+	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
-	golang.org/x/net v0.0.0-20211020060615-d418f374d309 // indirect
+	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
 	golang.org/x/sys v0.0.0-20220704084225-05e143d24a9e // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
@@ -73,8 +75,8 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-// Uncomment it for tests with alternative branches and run `go mod vendor`
-//replace github.com/skycoin/dmsg => ../dmsg
+// Uncomment it for tests with alternative branches and run `make dep`
+// replace github.com/skycoin/dmsg => ../dmsg
 
 // replace github.com/skycoin/skywire => ../skywire
 
