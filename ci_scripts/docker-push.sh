@@ -18,7 +18,7 @@ function docker_build() {
 		sudo bash -c 'echo 1 > /proc/sys/net/ipv6/conf/all/forwarding'; \
 	fi
   docker image build \
-    --tag=skycoinpro/service-discovery:"$tag" \
+    --tag=skycoin/service-discovery:"$tag" \
      .
 	# revert the changes
 	if [ $(uname -s) == "Linux" ]; then \
@@ -28,8 +28,8 @@ function docker_build() {
 }
 
 function docker_push() {
-  docker tag skycoinpro/service-discovery:"$tag" skycoinpro/service-discovery:"$tag"
-  docker image push skycoinpro/service-discovery:"$tag"
+  docker tag skycoin/service-discovery:"$tag" skycoin/service-discovery:"$tag"
+  docker image push skycoin/service-discovery:"$tag"
 }
 
 while getopts ":t:pb" o; do

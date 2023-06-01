@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-PROJECT_ROOT:=github.com/SkycoinPro/skycoin-service-discovery
+PROJECT_ROOT:=github.com/skycoin/skycoin-service-discovery
 
 SHELL := /usr/bin/env bash
 
