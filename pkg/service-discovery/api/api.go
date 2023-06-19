@@ -53,6 +53,7 @@ const (
 type HealthCheckResponse struct {
 	BuildInfo *buildinfo.Info `json:"build_info,omitempty"`
 	StartedAt time.Time       `json:"started_at"`
+	DmsgAddr  string          `json:"dmsg_address,omitempty"`
 }
 
 // WhitelistPKs store whitelisted pks of network monitor
@@ -68,11 +69,12 @@ type API struct {
 	nonceDB                     httpauth.NonceStore
 	geoFromIP                   geo.LocationDetails
 	startedAt                   time.Time
+	dmsgAddr                    string
 }
 
 // New creates an API.
 func New(log logrus.FieldLogger, db store.Store, nonceDB httpauth.NonceStore, apiKey string,
-	enableMetrics bool, m sdmetrics.Metrics) *API {
+	enableMetrics bool, m sdmetrics.Metrics, dmsgAddr string) *API {
 	api := &API{
 		log:                         log,
 		db:                          db,
@@ -82,6 +84,7 @@ func New(log logrus.FieldLogger, db store.Store, nonceDB httpauth.NonceStore, ap
 		nonceDB:                     nonceDB,
 		geoFromIP:                   geo.MakeIPDetails(log, apiKey),
 		startedAt:                   time.Now(),
+		dmsgAddr:                    dmsgAddr,
 	}
 	return api
 }
@@ -435,6 +438,7 @@ func (a *API) health(w http.ResponseWriter, r *http.Request) {
 	a.writeJSON(w, r, http.StatusOK, HealthCheckResponse{
 		BuildInfo: info,
 		StartedAt: a.startedAt,
+		DmsgAddr:  a.dmsgAddr,
 	})
 }
 

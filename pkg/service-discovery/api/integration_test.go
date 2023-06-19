@@ -76,7 +76,7 @@ func serveAPI(t *testing.T) *httptest.Server {
 	require.NoError(t, err)
 
 	m := sdmetrics.NewEmpty()
-	api := New(logging.MustGetLogger("server"), discDB, nonceDB, "", false, m)
+	api := New(logging.MustGetLogger("server"), discDB, nonceDB, "", false, m, "")
 	return httptest.NewServer(api)
 }
 

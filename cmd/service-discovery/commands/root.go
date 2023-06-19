@@ -44,6 +44,7 @@ var (
 	whitelistKeys   string
 	testEnvironment bool
 	sk              cipher.SecKey
+	dmsgPort        uint16
 )
 
 func init() {
@@ -58,6 +59,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&dmsgDisc, "dmsg-disc", "d", "", "url of dmsg-discovery default:\n"+skyenv.DmsgDiscAddr)
 	rootCmd.Flags().BoolVarP(&testEnvironment, "test-environment", "n", false, "distinguished between prod and test environment")
 	rootCmd.Flags().VarP(&sk, "sk", "s", "dmsg secret key\n")
+	rootCmd.Flags().Uint16Var(&dmsgPort, "dmsgPort", dmsg.DefaultDmsgHTTPPort, "dmsg port value\r")
 	var helpflag bool
 	rootCmd.SetUsageTemplate(help)
 	rootCmd.PersistentFlags().BoolVarP(&helpflag, "help", "h", false, "help for "+rootCmd.Use)
@@ -131,9 +133,14 @@ var rootCmd = &cobra.Command{
 			m = sdmetrics.NewVictoriaMetrics()
 		}
 
+		var dmsgAddr string
+		if !pk.Null() {
+			dmsgAddr = fmt.Sprintf("%s:%d", pk.Hex(), dmsgPort)
+		}
+
 		// we enable metrics middleware if address is passed
 		enableMetrics := metricsAddr != ""
-		sdAPI := api.New(log, db, nonceDB, apiKey, enableMetrics, m)
+		sdAPI := api.New(log, db, nonceDB, apiKey, enableMetrics, m, dmsgAddr)
 
 		var whitelistPKs []string
 		if whitelistKeys != "" {
