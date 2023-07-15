@@ -41,16 +41,15 @@ dep: ## Tidies and vendors dependencies.
 	$(OPTS) go mod vendor -v
 
 format: dep ## Formats the code. Must have goimports and goimports-reviser installed (use make install-tools).
-	goimports -w -local $(PROJECT_ROOT) ./pkg
-	goimports -w -local $(PROJECT_ROOT) ./cmd
-	find . -type f -name '*.go' -not -path "./vendor/*"  -exec goimports-reviser -project-name ${PROJECT_ROOT} -file-path {} \;
+	goimports -w -local $(PROJECT_ROOT) ./pkg ./cmd
+	find . -type f -name '*.go' -not -path "./vendor/*"  -exec goimports-reviser -project-name ${PROJECT_ROOT} {} \;
 
 lint: format ## Formats and lints golang code.
 	${OPTS} golangci-lint run -c .golangci.yml ./...
 	$(OPTS) go vet -all ./...
 
 test: ## Run tests (TODO: Have better redis setup logic. E.g. custom redis config).
-	docker run --name integration-test-db -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres -p 8383:5432 -d postgres 
+	docker run --name integration-test-db -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DATABASE=postgres -p 8383:5432 -d postgres
 	docker run -d -p 6379:6379 --name integration-test-redis redis
 	sleep 1
 	$(TEST_OPTS) go clean -testcache
