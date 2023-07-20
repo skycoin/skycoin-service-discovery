@@ -107,14 +107,21 @@ const (
 
 	// NodeInfo is the name of the survey file
 	NodeInfo string = "node-info.json"
-
-	// NodeInfoSha256 is the name of the survey checksum file
-	NodeInfoSha256 string = "node-info.sha"
 )
+
+// SkywireConfig returns the full path to the package config
+func SkywireConfig() string {
+	return SkywirePath + "/" + ConfigJSON
+}
+
+// SkyEnvs returns the full path to the environmental variable file
+func SkyEnvs() string {
+	return SkyenvFilePath + "/" + SkyenvFile
+}
 
 // PkgConfig struct contains paths specific to the installation
 type PkgConfig struct {
-	LauncherBinPath `json:"launcher"`
+	LauncherBinPath string `json:"launcher"`
 	LocalPath       string `json:"local_path"`
 	Hypervisor      `json:"hypervisor"`
 	//		TLSCertFile string `json:"tls_cert_file"`
