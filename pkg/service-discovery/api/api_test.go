@@ -7,13 +7,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
-	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 	"github.com/skycoin/skycoin/src/util/logging"
 	"github.com/skycoin/skywire-utilities/pkg/cipher"
 	"github.com/skycoin/skywire/pkg/servicedisc"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
+
+	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 )
 
 // apiTestWant describes the desired result of the test case.
