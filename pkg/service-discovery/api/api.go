@@ -16,8 +16,6 @@ import (
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
 	"github.com/sirupsen/logrus"
-	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
-	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 	"github.com/skycoin/skywire-utilities/pkg/buildinfo"
 	"github.com/skycoin/skywire-utilities/pkg/cipher"
 	"github.com/skycoin/skywire-utilities/pkg/geo"
@@ -26,6 +24,9 @@ import (
 	"github.com/skycoin/skywire-utilities/pkg/metricsutil"
 	"github.com/skycoin/skywire-utilities/pkg/networkmonitor"
 	"github.com/skycoin/skywire/pkg/servicedisc"
+
+	"github.com/skycoin/skycoin-service-discovery/internal/sdmetrics"
+	"github.com/skycoin/skycoin-service-discovery/pkg/service-discovery/store"
 )
 
 var (
