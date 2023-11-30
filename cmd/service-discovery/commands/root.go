@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	cc "github.com/ivanpirog/coloredcobra"
 	"github.com/skycoin/dmsg/pkg/direct"
@@ -184,6 +185,13 @@ var RootCmd = &cobra.Command{
 			}
 
 			defer closeDmsgDC()
+
+			go func() {
+				for {
+					sdAPI.DmsgServers = dmsgDC.ConnectedServersPK()
+					time.Sleep(time.Second)
+				}
+			}()
 
 			go dmsghttp.UpdateServers(ctx, dClient, dmsgDisc, dmsgDC, log)
 
