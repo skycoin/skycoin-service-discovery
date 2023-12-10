@@ -9,7 +9,7 @@ require (
 	github.com/ivanpirog/coloredcobra v1.0.1
 	github.com/lib/pq v1.10.9
 	github.com/sirupsen/logrus v1.9.3
-	github.com/skycoin/dmsg v1.3.12-0.20231120175607-0b6d5135bbc5
+	github.com/skycoin/dmsg v1.3.12-0.20231130180155-65d707cd1b01
 	github.com/skycoin/skycoin v0.27.1
 	github.com/skycoin/skywire v1.3.14-0.20231120181804-7c5994927a04
 	github.com/skycoin/skywire-utilities v0.0.0-20231120175000-12be4345eb26
