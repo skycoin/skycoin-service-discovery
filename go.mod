@@ -1,6 +1,8 @@
 module github.com/skycoin/skycoin-service-discovery
 
-go 1.18
+go 1.21
+
+toolchain go1.21.5
 
 require (
 	github.com/go-chi/chi v4.1.2+incompatible
@@ -9,11 +11,11 @@ require (
 	github.com/ivanpirog/coloredcobra v1.0.1
 	github.com/lib/pq v1.10.9
 	github.com/sirupsen/logrus v1.9.3
-	github.com/skycoin/dmsg v1.3.12-0.20231130180155-65d707cd1b01
+	github.com/skycoin/dmsg v1.3.14
 	github.com/skycoin/skycoin v0.27.1
-	github.com/skycoin/skywire v1.3.14-0.20231120181804-7c5994927a04
-	github.com/skycoin/skywire-utilities v0.0.0-20231120175000-12be4345eb26
-	github.com/spf13/cobra v1.7.0
+	github.com/skycoin/skywire v1.3.14
+	github.com/skycoin/skywire-utilities v1.3.14
+	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.8.4
 	gorm.io/driver/postgres v1.3.8
 	gorm.io/gorm v1.23.8
