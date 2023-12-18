@@ -159,7 +159,6 @@ linters:
     - megacheck
     - misspell
     - nakedret
-    - depguard
   enable-all: false
   disable:
   disable-all: true
