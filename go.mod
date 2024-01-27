@@ -14,7 +14,7 @@ require (
 	github.com/skycoin/dmsg v1.3.14
 	github.com/skycoin/skycoin v0.27.1
 	github.com/skycoin/skywire v1.3.16
-	github.com/skycoin/skywire-utilities v1.3.14
+	github.com/skycoin/skywire-utilities v1.3.15-0.20240127164323-6f667c2adceb
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.4
 	gorm.io/driver/postgres v1.3.8
