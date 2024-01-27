@@ -223,7 +223,7 @@ github.com/skycoin/skywire/pkg/transport/network/addrresolver
 github.com/skycoin/skywire/pkg/transport/network/handshake
 github.com/skycoin/skywire/pkg/transport/network/porter
 github.com/skycoin/skywire/pkg/transport/network/stcp
-# github.com/skycoin/skywire-utilities v1.3.14
+# github.com/skycoin/skywire-utilities v1.3.15-0.20240127164323-6f667c2adceb
 ## explicit; go 1.21
 github.com/skycoin/skywire-utilities/pkg/buildinfo
 github.com/skycoin/skywire-utilities/pkg/cipher
