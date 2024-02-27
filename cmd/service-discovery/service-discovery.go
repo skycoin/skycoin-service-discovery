@@ -2,8 +2,6 @@
 package main
 
 import (
-	"log"
-
 	cc "github.com/ivanpirog/coloredcobra"
 	"github.com/spf13/cobra"
 
@@ -31,9 +29,7 @@ func main() {
 		NoExtraNewlines: true,
 		NoBottomNewline: true,
 	})
-	if err := commands.Execute(); err != nil {
-		log.Fatal(err)
-	}
+	commands.Execute()
 }
 
 const help = "Usage:\r\n" +
