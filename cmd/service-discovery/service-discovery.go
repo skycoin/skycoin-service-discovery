@@ -10,10 +10,10 @@ import (
 
 func init() {
 	var helpflag bool
-	RootCmd.SetUsageTemplate(help)
-	RootCmd.PersistentFlags().BoolVarP(&helpflag, "help", "h", false, "help for service-discovery")
-	RootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
-	RootCmd.PersistentFlags().MarkHidden("help") //nolint
+	commands.RootCmd.SetUsageTemplate(help)
+	commands.RootCmd.PersistentFlags().BoolVarP(&helpflag, "help", "h", false, "help for service-discovery")
+	commands.RootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
+	commands.RootCmd.PersistentFlags().MarkHidden("help") //nolint
 }
 
 func main() {
