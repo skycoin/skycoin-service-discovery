@@ -14,7 +14,7 @@ require (
 	github.com/skycoin/dmsg v1.3.14
 	github.com/skycoin/skycoin v0.27.1
 	github.com/skycoin/skywire v1.3.16
-	github.com/skycoin/skywire-utilities v1.3.15-0.20240127164323-6f667c2adceb
+	github.com/skycoin/skywire-utilities v1.3.17
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.4
 	gorm.io/driver/postgres v1.3.8
@@ -29,7 +29,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.15.0 // indirect
-	github.com/go-chi/chi/v5 v5.0.10 // indirect
+	github.com/go-chi/chi/v5 v5.0.11 // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
 	github.com/gocarina/gocsv v0.0.0-20230616125104-99d496ca653d // indirect
@@ -85,6 +85,7 @@ require (
 
 // Uncomment it for tests with alternative branches and run `make dep`
 // replace github.com/skycoin/dmsg => ../dmsg
+replace github.com/skycoin/dmsg => github.com/skycoin/dmsg v1.3.18-0.20240226072009-86c43e8d4ca4
 
 // replace github.com/skycoin/skywire => ../skywire
 
