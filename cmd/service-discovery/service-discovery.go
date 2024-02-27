@@ -31,7 +31,7 @@ func main() {
 		NoExtraNewlines: true,
 		NoBottomNewline: true,
 	})
-	if err := RootCmd.Execute(); err != nil {
+	if err := commands.Execute(); err != nil {
 		log.Fatal(err)
 	}
 }
