@@ -188,7 +188,7 @@ github.com/quic-go/quic-go/quicvarint
 ## explicit; go 1.13
 github.com/sirupsen/logrus
 github.com/sirupsen/logrus/hooks/syslog
-# github.com/skycoin/dmsg v1.3.22-0.20240622174622-39e439d5679d => github.com/skycoin/dmsg v1.3.18-0.20240226072009-86c43e8d4ca4
+# github.com/skycoin/dmsg v1.3.22-0.20240622174622-39e439d5679d
 ## explicit; go 1.21
 github.com/skycoin/dmsg/internal/servermetrics
 github.com/skycoin/dmsg/pkg/direct
@@ -223,7 +223,7 @@ github.com/skycoin/skywire/pkg/transport/network/addrresolver
 github.com/skycoin/skywire/pkg/transport/network/handshake
 github.com/skycoin/skywire/pkg/transport/network/porter
 github.com/skycoin/skywire/pkg/transport/network/stcp
-# github.com/skycoin/skywire-utilities v1.3.17
+# github.com/skycoin/skywire-utilities v1.3.18-0.20240624172427-aeaf6f14fbdc
 ## explicit; go 1.21
 github.com/skycoin/skywire-utilities/pkg/buildinfo
 github.com/skycoin/skywire-utilities/pkg/cipher
@@ -367,4 +367,3 @@ gorm.io/gorm/logger
 gorm.io/gorm/migrator
 gorm.io/gorm/schema
 gorm.io/gorm/utils
-# github.com/skycoin/dmsg => github.com/skycoin/dmsg v1.3.18-0.20240226072009-86c43e8d4ca4

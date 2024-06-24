@@ -14,7 +14,7 @@ require (
 	github.com/skycoin/dmsg v1.3.22-0.20240622174622-39e439d5679d
 	github.com/skycoin/skycoin v0.27.1
 	github.com/skycoin/skywire v1.3.16
-	github.com/skycoin/skywire-utilities v1.3.17
+	github.com/skycoin/skywire-utilities v1.3.18-0.20240624172427-aeaf6f14fbdc
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.4
 	gorm.io/driver/postgres v1.3.8
@@ -85,8 +85,8 @@ require (
 
 // Uncomment it for tests with alternative branches and run `make dep`
 // replace github.com/skycoin/dmsg => ../dmsg
-//replace github.com/skycoin/dmsg => github.com/skycoin/dmsg 
+//replace github.com/skycoin/dmsg => github.com/skycoin/dmsg
 
 // replace github.com/skycoin/skywire => ../skywire
 
-// replace github.com/skycoin/skywire-utilities => ../skywire-utilities
+//replace github.com/skycoin/skywire-utilities => ../skywire-utilities
