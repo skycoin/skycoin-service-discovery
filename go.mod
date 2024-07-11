@@ -11,7 +11,7 @@ require (
 	github.com/ivanpirog/coloredcobra v1.0.1
 	github.com/lib/pq v1.10.9
 	github.com/sirupsen/logrus v1.9.3
-	github.com/skycoin/dmsg v1.3.22-0.20240624173430-27926d97ea3f
+	github.com/skycoin/dmsg v1.3.22-0.20240710131937-c1a367e17db9
 	github.com/skycoin/skycoin v0.27.1
 	github.com/skycoin/skywire v1.3.16
 	github.com/skycoin/skywire-utilities v1.3.18-0.20240624172427-aeaf6f14fbdc
@@ -85,7 +85,7 @@ require (
 
 // Uncomment it for tests with alternative branches and run `make dep`
 // replace github.com/skycoin/dmsg => ../dmsg
-//replace github.com/skycoin/dmsg => github.com/skycoin/dmsg
+// replace github.com/skycoin/dmsg => github.com/skycoin/dmsg
 
 // replace github.com/skycoin/skywire => ../skywire
 
