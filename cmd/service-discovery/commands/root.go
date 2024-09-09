@@ -60,7 +60,7 @@ func init() {
 	RootCmd.Flags().BoolVarP(&testMode, "test", "t", false, "run in test mode and disable auth")
 	RootCmd.Flags().StringVarP(&apiKey, "api-key", "g", "", "geo API key")
 	RootCmd.Flags().StringVarP(&dmsgDisc, "dmsg-disc", "d", skyenv.DmsgDiscAddr, "url of dmsg-discovery")
-	RootCmd.Flags().StringVar(&dmsgServerType, "dmsg-server-type", "", "type of dmsg server on dmsghttp connected")
+	RootCmd.Flags().StringVar(&dmsgServerType, "dmsg-server-type", "", "type of dmsg server on dmsghttp handler")
 	RootCmd.Flags().BoolVarP(&testEnvironment, "test-environment", "n", false, "distinguished between prod and test environment")
 	RootCmd.Flags().VarP(&sk, "sk", "s", "dmsg secret key\n")
 	RootCmd.Flags().Uint16Var(&dmsgPort, "dmsgPort", dmsg.DefaultDmsgHTTPPort, "dmsg port value")
