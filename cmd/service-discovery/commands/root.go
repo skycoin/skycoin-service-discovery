@@ -173,7 +173,7 @@ PG_USER="postgres" PG_DATABASE="sd" PG_PASSWORD="" service-discovery --sk $(tail
 		}()
 
 		if !pk.Null() {
-			servers := dmsghttp.GetServers(ctx, dmsgDisc, log)
+			servers := dmsghttp.GetServers(ctx, dmsgDisc, dmsgServerType, log)
 			config := &dmsg.Config{
 				MinSessions:          0, // listen on all available servers
 				UpdateInterval:       dmsg.DefaultUpdateInterval,
@@ -197,7 +197,7 @@ PG_USER="postgres" PG_DATABASE="sd" PG_PASSWORD="" service-discovery --sk $(tail
 				}
 			}()
 
-			go dmsghttp.UpdateServers(ctx, dClient, dmsgDisc, dmsgDC, log)
+			go dmsghttp.UpdateServers(ctx, dClient, dmsgDisc, dmsgDC, dmsgServerType, log)
 
 			go func() {
 				if err := dmsghttp.ListenAndServe(ctx, sk, sdAPI, dClient, dmsg.DefaultDmsgHTTPPort, dmsgDC, log); err != nil {
