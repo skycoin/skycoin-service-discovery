@@ -83,7 +83,10 @@ require (
 )
 
 // Uncomment it for tests with alternative branches and run `make dep`
-// replace github.com/skycoin/dmsg => ../dmsg
+replace github.com/skycoin/dmsg => ../dmsg
+
+replace github.com/skycoin/skywire => ../skywire
+
 //replace github.com/skycoin/dmsg => github.com/skycoin/dmsg
 
 // replace github.com/skycoin/skywire => ../skywire

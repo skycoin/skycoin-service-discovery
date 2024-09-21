@@ -3,6 +3,7 @@ package commands
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -12,13 +13,13 @@ import (
 	"github.com/skycoin/dmsg/pkg/direct"
 	"github.com/skycoin/dmsg/pkg/dmsg"
 	"github.com/skycoin/dmsg/pkg/dmsghttp"
+	"github.com/skycoin/skywire"
 	"github.com/skycoin/skywire-utilities/pkg/buildinfo"
 	"github.com/skycoin/skywire-utilities/pkg/cipher"
 	"github.com/skycoin/skywire-utilities/pkg/cmdutil"
 	"github.com/skycoin/skywire-utilities/pkg/httpauth"
 	"github.com/skycoin/skywire-utilities/pkg/logging"
 	"github.com/skycoin/skywire-utilities/pkg/metricsutil"
-	"github.com/skycoin/skywire"
 	"github.com/skycoin/skywire-utilities/pkg/storeconfig"
 	"github.com/skycoin/skywire-utilities/pkg/tcpproxy"
 	"github.com/spf13/cobra"
@@ -35,26 +36,24 @@ var log = logging.MustGetLogger("service-discovery")
 const redisPrefix = "service-discovery"
 
 var (
-	addr            string
-	metricsAddr     string
-	redisURL        string
-	pgHost          string
-	pgPort          string
-	testMode        bool
-	apiKey          string
-	dmsgDisc        string
-	whitelistKeys   string
-	testEnvironment bool
-	sk              cipher.SecKey
-	dmsgPort        uint16
-	dmsgServerType  string
+	addr           string
+	metricsAddr    string
+	redisURL       string
+	pgHost         string
+	pgPort         string
+	testMode       bool
+	apiKey         string
+	dmsgDisc       string
+	whitelistKeys  string
+	sk             cipher.SecKey
+	dmsgPort       uint16
+	dmsgServerType string
 )
 
 func init() {
 	var envServices skywire.EnvServices
 	var services skywire.Services
-	var sdURL string
-	if err := json.Unmarshal([]byte(jsonData), &envServices); err == nil {
+	if err := json.Unmarshal([]byte(skywire.ServicesJSON), &envServices); err == nil {
 		if err := json.Unmarshal(envServices.Prod, &services); err == nil {
 			dmsgDisc = services.DmsgDiscovery
 		}
@@ -69,7 +68,6 @@ func init() {
 	RootCmd.Flags().StringVarP(&apiKey, "api-key", "g", "", "geo API key")
 	RootCmd.Flags().StringVarP(&dmsgDisc, "dmsg-disc", "d", dmsgDisc, "url of dmsg-discovery")
 	RootCmd.Flags().StringVar(&dmsgServerType, "dmsg-server-type", "", "type of dmsg server on dmsghttp handler")
-	RootCmd.Flags().BoolVarP(&testEnvironment, "test-environment", "n", false, "distinguished between prod and test environment")
 	RootCmd.Flags().VarP(&sk, "sk", "s", "dmsg secret key\n")
 	RootCmd.Flags().Uint16Var(&dmsgPort, "dmsgPort", dmsg.DefaultDmsgHTTPPort, "dmsg port value")
 }
@@ -90,7 +88,7 @@ keys-gen | tee sd-config.json
 PG_USER="postgres" PG_DATABASE="sd" PG_PASSWORD="" service-discovery --sk $(tail -n1 sd-config.json)`,
 	Run: func(_ *cobra.Command, _ []string) {
 		if dmsgDisc == "" {
-			dmsgDisc = skyenv.DmsgDiscAddr
+			dmsgDisc = dmsg.DmsgDiscAddr(false)
 		}
 		if _, err := buildinfo.Get().WriteTo(os.Stdout); err != nil {
 			log.Printf("Failed to output build info: %v", err)
@@ -159,12 +157,6 @@ PG_USER="postgres" PG_DATABASE="sd" PG_PASSWORD="" service-discovery --sk $(tail
 		var whitelistPKs []string
 		if whitelistKeys != "" {
 			whitelistPKs = strings.Split(whitelistKeys, ",")
-		} else {
-			if testEnvironment {
-				whitelistPKs = strings.Split(skyenv.TestNetworkMonitorPKs, ",")
-			} else {
-				whitelistPKs = strings.Split(skyenv.NetworkMonitorPKs, ",")
-			}
 		}
 		for _, v := range whitelistPKs {
 			api.WhitelistPKs.Set(v)
