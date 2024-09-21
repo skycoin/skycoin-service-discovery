@@ -18,7 +18,7 @@ import (
 	"github.com/skycoin/skywire-utilities/pkg/httpauth"
 	"github.com/skycoin/skywire-utilities/pkg/logging"
 	"github.com/skycoin/skywire-utilities/pkg/metricsutil"
-	"github.com/skycoin/skywire-utilities/pkg/skyenv"
+	"github.com/skycoin/skywire"
 	"github.com/skycoin/skywire-utilities/pkg/storeconfig"
 	"github.com/skycoin/skywire-utilities/pkg/tcpproxy"
 	"github.com/spf13/cobra"
@@ -51,6 +51,14 @@ var (
 )
 
 func init() {
+	var envServices skywire.EnvServices
+	var services skywire.Services
+	var sdURL string
+	if err := json.Unmarshal([]byte(jsonData), &envServices); err == nil {
+		if err := json.Unmarshal(envServices.Prod, &services); err == nil {
+			dmsgDisc = services.DmsgDiscovery
+		}
+	}
 	RootCmd.Flags().StringVarP(&addr, "addr", "a", ":9098", "address to bind to")
 	RootCmd.Flags().StringVarP(&metricsAddr, "metrics", "m", "", "address to bind metrics API to")
 	RootCmd.Flags().StringVarP(&redisURL, "redis", "r", "redis://localhost:6379", "connections string for a redis store")
@@ -59,7 +67,7 @@ func init() {
 	RootCmd.Flags().StringVarP(&whitelistKeys, "whitelist-keys", "w", "", "list of whitelisted keys of network monitor used for deregistration")
 	RootCmd.Flags().BoolVarP(&testMode, "test", "t", false, "run in test mode and disable auth")
 	RootCmd.Flags().StringVarP(&apiKey, "api-key", "g", "", "geo API key")
-	RootCmd.Flags().StringVarP(&dmsgDisc, "dmsg-disc", "d", skyenv.DmsgDiscAddr, "url of dmsg-discovery")
+	RootCmd.Flags().StringVarP(&dmsgDisc, "dmsg-disc", "d", dmsgDisc, "url of dmsg-discovery")
 	RootCmd.Flags().StringVar(&dmsgServerType, "dmsg-server-type", "", "type of dmsg server on dmsghttp handler")
 	RootCmd.Flags().BoolVarP(&testEnvironment, "test-environment", "n", false, "distinguished between prod and test environment")
 	RootCmd.Flags().VarP(&sk, "sk", "s", "dmsg secret key\n")
