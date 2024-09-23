@@ -3,14 +3,12 @@ package dmsg
 
 import (
 	"time"
-	"encoding/json"
+
 	"github.com/skycoin/skywire"
 )
 
 // Constants.
 const (
-
-
 	DefaultMinSessions = 1
 
 	DefaultUpdateInterval = time.Minute
@@ -24,19 +22,11 @@ const (
 	DefaultCommunityDmsgServerType = "community"
 )
 
-func DmsgDiscAddr(testenv bool) string {
-	var envServices skywire.EnvServices
-	var services skywire.Services
-	if err := json.Unmarshal([]byte(skywire.ServicesJSON), &envServices); err == nil {
-		if testenv {
-			if err := json.Unmarshal(envServices.Prod, &services); err == nil {
-				return services.DmsgDiscovery
-			}
-		} else {
-			if err := json.Unmarshal(envServices.Test, &services); err == nil {
-				return services.DmsgDiscovery
-			}
-		}
+// DiscAddr returns the address of the dmsg discovery
+func DiscAddr(testenv bool) string {
+	if testenv {
+		return skywire.Prod.DmsgDiscovery
+
 	}
-	return ""
+	return skywire.Test.DmsgDiscovery
 }
