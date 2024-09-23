@@ -1,7 +1,7 @@
 # Skycoin Service Discovery
 
-The Skycoin service discovery allows registering services to be discovered by other participants in the Skywire network. Currently it allows registration 
-and discovery of 
+The Skycoin service discovery allows registering services to be discovered by other participants in the Skywire network. Currently it allows registration
+and discovery of
 
 - VPNs
 - Socks proxies
@@ -53,7 +53,7 @@ PG_USER=postgres PG_PASSWORD=postgres PG_DATABASE=postgres go run ./cmd/service-
 
 The proxy service registration and de-registration endpoints require us to use specialised html header fields for authentication/authorization. When testing, this can be a pain. To disable auth completely, run `proxy-server` with the `--test` flag:
 
-```bash 
+```bash
 go run ./cmd/service-discovery/service-discovery.go --test
 ```
 
@@ -72,7 +72,7 @@ $ docker build -f Dockerfile -t skycoin/service-discovery:test .
 To push the docker image run:
 
 ```bash
-$ docker push skycoin/service-discovery:test 
+$ docker push skycoin/service-discovery:test
 ```
 
 ### Help
@@ -179,3 +179,14 @@ Response body:
 The server will return the saved proxy service entry.
 
 If the request has no `"geo"` field, the server may fill the field using the requester's IP address.
+
+
+## Dependency Graph
+
+made with [goda](https://github.com/loov/goda)
+
+```
+goda graph github.com/skycoin/skycoin-service-discovery/... | dot -Tsvg -o skycoin-service-discovery-goda-graph.svg
+```
+
+![Dependency Graph](skycoin-service-discovery-goda-graph.svg "github.com/skycoin/skycoin-service-discovery Dependency Graph")
