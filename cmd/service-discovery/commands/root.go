@@ -1,9 +1,8 @@
-// Package commands cmd/service-discovery/root.go
+// Package commands cmd/service-discovery/commands/root.go
 package commands
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -13,7 +12,6 @@ import (
 	"github.com/skycoin/dmsg/pkg/direct"
 	"github.com/skycoin/dmsg/pkg/dmsg"
 	"github.com/skycoin/dmsg/pkg/dmsghttp"
-	"github.com/skycoin/skywire"
 	"github.com/skycoin/skywire-utilities/pkg/buildinfo"
 	"github.com/skycoin/skywire-utilities/pkg/cipher"
 	"github.com/skycoin/skywire-utilities/pkg/cmdutil"
@@ -51,25 +49,18 @@ var (
 )
 
 func init() {
-	var envServices skywire.EnvServices
-	var services skywire.Services
-	if err := json.Unmarshal([]byte(skywire.ServicesJSON), &envServices); err == nil {
-		if err := json.Unmarshal(envServices.Prod, &services); err == nil {
-			dmsgDisc = services.DmsgDiscovery
-		}
-	}
-	RootCmd.Flags().StringVarP(&addr, "addr", "a", ":9098", "address to bind to")
-	RootCmd.Flags().StringVarP(&metricsAddr, "metrics", "m", "", "address to bind metrics API to")
-	RootCmd.Flags().StringVarP(&redisURL, "redis", "r", "redis://localhost:6379", "connections string for a redis store")
-	RootCmd.Flags().StringVarP(&pgHost, "pg-host", "o", "localhost", "host of postgres")
-	RootCmd.Flags().StringVarP(&pgPort, "pg-port", "p", "5432", "port of postgres")
-	RootCmd.Flags().StringVarP(&whitelistKeys, "whitelist-keys", "w", "", "list of whitelisted keys of network monitor used for deregistration")
-	RootCmd.Flags().BoolVarP(&testMode, "test", "t", false, "run in test mode and disable auth")
-	RootCmd.Flags().StringVarP(&apiKey, "api-key", "g", "", "geo API key")
-	RootCmd.Flags().StringVarP(&dmsgDisc, "dmsg-disc", "d", dmsgDisc, "url of dmsg-discovery")
-	RootCmd.Flags().StringVar(&dmsgServerType, "dmsg-server-type", "", "type of dmsg server on dmsghttp handler")
-	RootCmd.Flags().VarP(&sk, "sk", "s", "dmsg secret key\n")
-	RootCmd.Flags().Uint16Var(&dmsgPort, "dmsgPort", dmsg.DefaultDmsgHTTPPort, "dmsg port value")
+	RootCmd.Flags().StringVarP(&addr, "addr", "a", ":9098", "address to bind to\033[0m")
+	RootCmd.Flags().StringVarP(&metricsAddr, "metrics", "m", "", "address to bind metrics API to\033[0m")
+	RootCmd.Flags().StringVarP(&redisURL, "redis", "r", "redis://localhost:6379", "connections string for a redis store\033[0m")
+	RootCmd.Flags().StringVarP(&pgHost, "pg-host", "o", "localhost", "host of postgres\033[0m")
+	RootCmd.Flags().StringVarP(&pgPort, "pg-port", "p", "5432", "port of postgres\033[0m")
+	RootCmd.Flags().StringVarP(&whitelistKeys, "whitelist-keys", "w", "", "list of whitelisted keys of network monitor used for deregistration\033[0m")
+	RootCmd.Flags().BoolVarP(&testMode, "test", "t", false, "run in test mode and disable auth\033[0m")
+	RootCmd.Flags().StringVarP(&apiKey, "api-key", "g", "", "geo API key\033[0m")
+	RootCmd.Flags().StringVarP(&dmsgDisc, "dmsg-disc", "d", dmsg.DiscAddr(false), "url of dmsg-discovery\033[0m")
+	RootCmd.Flags().StringVar(&dmsgServerType, "dmsg-server-type", "", "type of dmsg server on dmsghttp handler\033[0m")
+	RootCmd.Flags().VarP(&sk, "sk", "s", "dmsg secret key\033[0m\n\r")
+	RootCmd.Flags().Uint16Var(&dmsgPort, "dmsgPort", dmsg.DefaultDmsgHTTPPort, "dmsg port value\033[0m")
 }
 
 // RootCmd contains the root service-discovery command
@@ -88,7 +79,7 @@ keys-gen | tee sd-config.json
 PG_USER="postgres" PG_DATABASE="sd" PG_PASSWORD="" service-discovery --sk $(tail -n1 sd-config.json)`,
 	Run: func(_ *cobra.Command, _ []string) {
 		if dmsgDisc == "" {
-			dmsgDisc = dmsg.DmsgDiscAddr(false)
+			dmsgDisc = dmsg.DiscAddr(false)
 		}
 		if _, err := buildinfo.Get().WriteTo(os.Stdout); err != nil {
 			log.Printf("Failed to output build info: %v", err)
