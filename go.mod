@@ -5,6 +5,7 @@ go 1.22.0
 toolchain go1.23.1
 
 require (
+	github.com/chen3feng/safecast v0.0.0-20220908170618-81b2ecd47937
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/go-chi/cors v1.2.1
 	github.com/go-redis/redis v6.15.9+incompatible
@@ -26,7 +27,6 @@ require (
 	github.com/VictoriaMetrics/metrics v1.35.1 // indirect
 	github.com/ccding/go-stun/stun v0.0.0-20200514191101-4dc67bcdb029 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/chen3feng/safecast v0.0.0-20220908170618-81b2ecd47937 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/fatih/color v1.17.0 // indirect
