@@ -18,7 +18,7 @@ TEST_ARGS:=-tags no_ci -cover -timeout=5m
 
 BIN := ${PWD}/bin
 
-SKYWIRE_UTILITIES_REPO := github.com/skycoin/skywire-utilities
+SKYWIRE_UTILITIES_REPO := github.com/skycoin/skywire/pkg/skywire-utilities
 BUILDINFO_PATH := $(SKYWIRE_UTILITIES_REPO)/pkg/buildinfo
 
 BUILDINFO_VERSION := -X $(BUILDINFO_PATH).version=$(VERSION)
