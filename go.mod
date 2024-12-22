@@ -14,7 +14,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/skycoin/dmsg v1.3.29-0.20241218010226-56d92f2ef624
 	github.com/skycoin/skycoin v0.28.1-0.20241105130348-39b49a2d0a7f
-	github.com/skycoin/skywire v1.3.29-rc1.0.20241217211947-72c9d0b82083
+	github.com/skycoin/skywire v1.3.29-rc1.0.20241218012457-0ea0df822f95
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.10.0
 	gorm.io/driver/postgres v1.5.11
